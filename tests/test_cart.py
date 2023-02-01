@@ -45,7 +45,18 @@ def test_add_many_items():
 
     print(receipt)
 
+def test_currency():
+    cart = ShoppingCart()
+    cart.add_item("apple", 1)
+
+
+    receipt = cart.print_receipt("usd")
+    print(receipt)
+    assert receipt[0] == "apple - 1 - $1.08"
+    assert receipt[-1] == "Total - 1 - $1.08"
+
 import os
 os.getcwd()
 
 test_add_many_items()
+test_currency()
