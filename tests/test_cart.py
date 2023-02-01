@@ -28,3 +28,24 @@ def test_add_different_items():
 
     assert receipt[0] == "banana - 1 - €1.10"
     assert receipt[1] == "kiwi - 1 - €3.00"
+
+def test_add_many_items():
+    cart = ShoppingCart()
+    cart.add_item("apple", 1)
+    cart.add_item("banana", 1)
+    cart.add_item("kiwi", 1)
+    cart.add_item("apple", 2)
+
+    receipt = cart.print_receipt()
+
+    assert receipt[0] == "banana - 1 - €1.10"
+    assert receipt[1] == "kiwi - 1 - €3.00"
+    assert receipt[2] == "apple - 3 - €3.00"
+    assert receipt[-1] == "Total - 5 - €7.10"
+
+    print(receipt)
+
+import os
+os.getcwd()
+
+test_add_many_items()
