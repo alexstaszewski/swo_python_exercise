@@ -60,6 +60,7 @@ class ShoppingCart(abc.ShoppingCart):
     def _get_product_price(self, product_code: str) -> float:
         # Read a JSON file with the prices
         # If the product does not exist, set the price to 0
+        # Prices are EURO
         with open(self._prices_json, 'r') as json_file:
             product_prices = json.loads(json_file.read())
         try:

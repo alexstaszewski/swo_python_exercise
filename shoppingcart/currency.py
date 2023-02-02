@@ -10,7 +10,8 @@ import os
 class Currency(abc.Currency):
     def __init__(self):
         self._currencies = dict()
-        self._currencies_json = "C:\\Users\\Alex\\Documents\\GitHub\\swo_python_exercise\\data\\currencies.json"
+
+        self._currencies_json = "../data/currencies.json"
         self._currency_rates = CurrencyRates()
         self._currency_codes = CurrencyCodes()
 
@@ -21,7 +22,6 @@ class Currency(abc.Currency):
     def update_currencies(self, currency : str = "EUR"):
         # Create the currencies json file if it does not exist
         with open(self._currencies_json, 'w+') as json_file:
-            #currencies_json = json.loads(json_file.read())
 
             # Get a dictionary of all the currency exchange rates in comparison to the base currency
             currency_dict = self._currency_rates.get_rates(currency)
